@@ -5,12 +5,13 @@ import React, { Component } from 'react';
 class Question extends Component {
   
   render() {
+    
     return (
       <div>
-        Add your QuestionText, Reset Button and AnswerButtons here.  
+        {this.props.question_text}
       </div>
     );
   }
 }
 
-export default Question;
+export  {Question} ;
