@@ -9,6 +9,7 @@ class Question extends Component {
     return (
       <div>
         {this.props.question_text}
+
       </div>
     );
   }
