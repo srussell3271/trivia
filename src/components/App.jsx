@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import data from '../sample_data.json';
 import '../css/App.css';
 // import components
-import {Question} from "./Question.jsx";
-import {Answer} from "./Answer.jsx";
+import { Question } from "./Question.jsx";
+import { Answer } from "./Answer.jsx";
 
 var database = [
   {
@@ -1263,23 +1263,39 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      clickedItems: [],
       index: 0
     }
   }
   render() {
+    let numberToGet = 15;
+    let updateDatabase = database.splice(database.length - numberToGet);
+    let currentQuestion = updateDatabase[this.state.index];
+    let totalNumOfQuestions = updateDatabase.length;
+    let currentQuestionNum = this.state.index;
+    let noMoreQuestions = currentQuestionNum < totalNumOfQuestions ;
     return (
 
       <div className="app">
-        
-    <Question question_text= {database[this.state.index].question_text}> </Question>
-    <Answer choices={database[this.state.index].choices} onclick={(index) => {
+        {(noMoreQuestions)?(
+        <div>
+          <Question question_text={currentQuestion.question_text}> </Question>
+          <Answer choices={currentQuestion.choices} onclick={(index) => {
+            
+            alert(index == currentQuestion.correct_choice_index)
+            if (index == currentQuestion.correct_choice_index) {
+              this.setState({ index: this.state.index + 1 })
 
-      alert(index == database[this.state.index].correct_choice_index)
-      if(index == database[this.state.index].correct_choice_index){
-        this.setState({index: this.state.index + 1})
-      }
-      }}> </Answer>
-      </div>
+            }
+          }}> </Answer> 
+        </div>
+        ):(
+          <div>
+          Congrats, you have finish the Trivia...Go away!
+          </div>
+        )}
+
+      </div >
     );
   }
 }

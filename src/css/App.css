@@ -1,10 +1,30 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: black;
+  color: white;
+  font-size: 35px;
 }
 
 .app {
   text-align: center;
 }
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+}
 
+ ul li {
+    background-color: greenyellow;
+    text-transform: capitalize;
+    color: darkviolet;
+    width: 46%;
+    margin: 40px 10px;
+    border: 2px blue dashed;
+    padding: 10px 0px;
 
+}
+.strikethrough {
+  text-decoration: line-through;
+}
